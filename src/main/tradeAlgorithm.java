@@ -5,7 +5,7 @@ import org.json.simple.JSONArray;
 
 import java.io.FileWriter;
 import java.io.IOException;
-
+import java.util.Date;
 
 
 public class tradeAlgorithm {
@@ -16,6 +16,7 @@ public class tradeAlgorithm {
 
 
         mainAlgorithm();
+       // docGenerator.getLastData();
 
 
 
@@ -45,11 +46,15 @@ public class tradeAlgorithm {
             }
 
             if(decision == true){
-                transactionProcess(decision,desireReguralDeal,currentAskBid[0],currentAskBid[1]);
+                transactionProcess(decision,currentStock,desireReguralDeal,currentAskBid[0],currentAskBid[1]);
             }else {
 
+                Date date = new Date();
+
+                String currentDate = date.toString();
+
                 System.out.println("Stan konta regularnego wynosi: " + Wallets[0] + " " + "Stan konta kryptowalut wynosi: " + Wallets[1] +
-                        " " + "Wymagana kwota do wykonania transakcji: " + desireReguralDeal + "  Obecna kwota po kursie wynosi: " + currentStock);
+                        " " + "Wymagana kwota do wykonania transakcji: " + desireReguralDeal + "  Obecna kwota po kursie wynosi: " + currentStock + " " + currentDate);
 
 
             }
@@ -60,7 +65,11 @@ public class tradeAlgorithm {
 
 
 
-    public static void transactionProcess(boolean parameter,double dRD,double cA, double cB){
+    public static void transactionProcess(boolean parameter,double cWV,double dRD,double cA, double cB){
+
+        dRD = dRD+(dRD*0.003);
+
+        docGenerator.JSONgenerate(cWV,dRD,cA,cB);
 
 
         System.out.println("Transsaction Executed");

@@ -13,7 +13,7 @@ import org.json.JSONObject;
 public class prospectorsClass {
 
     public static double[] getBidAskCrypto() throws IOException{
-        String url = "https://bitbay.net/API/Public/ETHPLN/orderbook.json";
+        String url = "https://bitbay.net/API/Public/BTCPLN/orderbook.json";
         String USER_AGENT = "Mozilla/5.0";
 
         URL obj = new URL(url);
@@ -65,10 +65,10 @@ public class prospectorsClass {
 
     public static double[] setCurrentValue() throws IOException {
 
-
-
-        double regularWallet = 100.00; // In future getHistoricalData() method
-        double lastBid = 3589.00;
+        //Get data from JSON file( temporary) about current status of regularWaller Value it needs method ( getLastInfo() )
+        double[] dataArray = docGenerator.getLastData();
+        double regularWallet = dataArray[0] ; // In future getHistoricalData() method
+        double lastBid = 37232.01;
         double cryptoWallet = regularWallet/lastBid;
 
         double[] regular_cryptoWallet = new double[2];
