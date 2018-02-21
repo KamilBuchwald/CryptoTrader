@@ -1,28 +1,27 @@
 package main;
 
-import org.json.JSONString;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Iterator;
+
 
 public class docGenerator {
 
     public static void JSONgenerate(double rWS, double dFV, double c_Ask, double c_Bid) {
 
         JSONObject obj = new JSONObject();
-      //  obj.put("date", date);
+        //  obj.put("date", date);
         JSONArray list = new JSONArray();
         JSONObject inter = new JSONObject();
         inter.put("RegularWalletStatus", rWS);
         inter.put("DesiredFIATDeal", dFV);
-        inter.put("TransactionAsk", c_Ask);
+        inter.put("TranssactionAsk", c_Ask);
         inter.put("TranssactionBid", c_Bid);
 
 
@@ -31,7 +30,8 @@ public class docGenerator {
 
         obj.put("Transsactions", list);
 
-        try (FileWriter file = new FileWriter("c://users/kamil/Desktop/test.json")) {
+
+        try (FileWriter file = new FileWriter("C:/Users/kamil/IdeaProjects/CryptoTraderApp/test.json")) {
 
             file.write(obj.toJSONString());
             file.flush();
@@ -39,7 +39,6 @@ public class docGenerator {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         System.out.print(obj);
 
 
@@ -57,7 +56,7 @@ public class docGenerator {
 
         try {
 
-            Object obj = parser.parse(new FileReader("c://users/kamil/Desktop/test.json"));
+            Object obj = parser.parse(new FileReader("C:/Users/kamil/IdeaProjects/CryptoTraderApp/test.json"));
 
             JSONObject jsonObject = (JSONObject) obj;
             JSONArray dataArray = (JSONArray) jsonObject.get("Transsactions");
@@ -78,13 +77,10 @@ public class docGenerator {
         }
 
         double[] values = new double[4];
-    values[0] = RegularWalletValue;
-    values[1] = DesiredFIATDeal;
-    values[2] = TranssactionAsk;
-    values[3] = TranssactionBid;
-
-
-
+        values[0] = RegularWalletValue;
+        values[1] = DesiredFIATDeal;
+        values[2] = TranssactionAsk;
+        values[3] = TranssactionBid;
 
 
         return values;

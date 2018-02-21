@@ -2,7 +2,7 @@ package main;
 
 public class transsactionClass {
 
-    public static boolean Sell(boolean decision){
+    public static boolean Sell(boolean decision) {
 
         //Here if decision = true method will be connectiong to
         // BitBay API and sell cryptocurrency of desired course
@@ -11,10 +11,9 @@ public class transsactionClass {
         return false;
     }
 
-    public static boolean Buy(double desiredRegularDeal, double currentAsk, double currentBid){
+    public static boolean Buy(double desiredRegularDeal, double currentAsk, double currentBid) {
         //Here will be maked transaction of buy cryptocurrency of good course
         //
-
 
 
         return false;

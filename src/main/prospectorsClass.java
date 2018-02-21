@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.json.JSONArray;
@@ -12,7 +11,7 @@ import org.json.JSONObject;
 
 public class prospectorsClass {
 
-    public static double[] getBidAskCrypto() throws IOException{
+    public static double[] getBidAskCrypto() throws IOException {
         String url = "https://bitbay.net/API/Public/BTCPLN/orderbook.json";
         String USER_AGENT = "Mozilla/5.0";
 
@@ -31,7 +30,6 @@ public class prospectorsClass {
         while ((inputLine = in.readLine()) != null) {
             response.append(inputLine);
         }
-
 
 
         String jObject = response.toString();
@@ -57,19 +55,14 @@ public class prospectorsClass {
 
     }
 
-    public static void getHistoricalData(){
-        // Method to get data form stock about  your last vallet value or for tests from json file.
-
-
-    }
 
     public static double[] setCurrentValue() throws IOException {
 
         //Get data from JSON file( temporary) about current status of regularWaller Value it needs method ( getLastInfo() )
         double[] dataArray = docGenerator.getLastData();
-        double regularWallet = dataArray[0] ; // In future getHistoricalData() method
-        double lastBid = 37232.01;
-        double cryptoWallet = regularWallet/lastBid;
+        double regularWallet = dataArray[0]; // In future getHistoricalData() method
+        double lastBid = dataArray[3];
+        double cryptoWallet = regularWallet / lastBid;
 
         double[] regular_cryptoWallet = new double[2];
 
